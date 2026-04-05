@@ -55,6 +55,15 @@ namespace NavionX
             webViewBrowser.SourceChanged += (s, a) => {
                 webViewUI.CoreWebView2.PostWebMessageAsString(webViewBrowser.Source.ToString());
             };
+
+            // Detecta cuando una página intenta abrir una ventana nueva
+            webViewBrowser.CoreWebView2.NewWindowRequested += (s, args) =>
+            {
+                // Cancelamos la apertura de la ventana externa
+                args.Handled = true;
+         
+                webViewBrowser.CoreWebView2.Navigate(args.Uri);
+            };
         }
 
         private void Interfaz_WebMessageReceived(object sender, Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs e)
