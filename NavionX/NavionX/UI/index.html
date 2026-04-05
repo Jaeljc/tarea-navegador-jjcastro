@@ -20,5 +20,46 @@
         <button id="btnIr">Ir</button>
 
     </div>
+
+    <script>
+        const btnIr = document.getElementById('btnIr');
+        const urlInput = document.getElementById('urlInput');
+
+        btnIr.addEventListener('click', () => {
+            // Manda lo escrito en la barra
+            window.chrome.webview.postMessage(urlInput.value);
+        });
+
+        // configura Enter
+        urlInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                window.chrome.webview.postMessage(urlInput.value);
+            }
+        });
+
+        // Identificamos los botones
+        const btnAtras = document.getElementById('btnAtras');
+        const btnAdelante = document.getElementById('btnAdelante');
+        const btnRecargar = document.getElementById('btnRecargar');
+
+        // Orden al hacer click
+        btnAtras.addEventListener('click', () => {
+            window.chrome.webview.postMessage('back');
+        });
+
+        btnAdelante.addEventListener('click', () => {
+            window.chrome.webview.postMessage('forward');
+        });
+
+        btnRecargar.addEventListener('click', () => {
+            window.chrome.webview.postMessage('reload');
+        });
+
+        // Escucha mensajes que vienen desde C# hacia el HTML
+        window.chrome.webview.addEventListener('message', event => {
+            urlInput.value = event.data; // Pone la URL real en la barra
+        });
+    </script>
+
 </body>
 </html>
