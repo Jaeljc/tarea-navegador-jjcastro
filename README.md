@@ -22,7 +22,7 @@ Para esta asignación, me enfoqué en que el navegador no solo renderizara pági
 ##  Video Explicativo
 
 Puedes ver la explicación detallada de la construcción y la lógica detrás del código en el siguiente enlace:
-[👉 Haz clic aquí para ver el video en YouTube/Drive]
+[(https://drive.google.com/file/d/1g_ny4qQj6_CrqW7Gtlt9T5qjYYyOGNaB/view?usp=sharing)]
 
 ##  Instrucciones de Ejecución
 1. Clonar el repositorio.
